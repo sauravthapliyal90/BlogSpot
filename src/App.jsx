@@ -3,6 +3,7 @@ import './App.css'
 import { useDispatch } from 'react-redux'
 import authServices from './appwrite/auth'
 import { login, logout } from './store/authSlice'
+import {Footer, Header} from './components'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -20,11 +21,19 @@ function App() {
     .finally(() => setLoading(false))
   },[])
 
-  return (
-    <>
-      <div className='min-h-screen flex flex-wrap content-between'></div>
-    </>
-  )
+  return !loading ? (
+    
+      <div className='min-h-screen flex flex-wrap content-between bg-gray-400'>
+         <div className='w-full block'>
+          <Header />
+          <main>
+
+          </main>
+          <Footer />
+         </div>
+      </div>
+    
+  ) : null
 }
 
 export default App

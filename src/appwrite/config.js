@@ -53,11 +53,12 @@ export class Services{
 
     async deletePost(slug){
         try {
-          return await this.database.deleteDocument(
+          await this.database.deleteDocument(
             confi.appwriteDatabaseId,
             confi.appwriteColectionId,
             slug
           )
+          return true
         } catch (error) {
            throw error;
         }
@@ -117,7 +118,7 @@ export class Services{
          return await this.storage.getFilePreview(
            confi.appwriteBucketId,
            fileId
-         )
+         ) 
       } catch (error) {
          throw error;
       }
